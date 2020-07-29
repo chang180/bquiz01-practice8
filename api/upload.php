@@ -14,6 +14,12 @@ switch ($table) {
     case "title":
         $row['id'] = $id;
         break;
+    case "mvim":
+        $row['id'] = $id;
+        break;
+    case "image":
+        $row['id'] = $id;
+        break;
 }
 
 $db->save($row);

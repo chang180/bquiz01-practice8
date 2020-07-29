@@ -13,6 +13,12 @@ switch ($table) {
     case "title":
         $row['text'] = $_POST['text'];
         break;
+    case "mvim":
+        $row['sh'] = 1;
+        break;
+    case "image":
+        $row['sh'] = 1;
+        break;
     default:
         $row['text'] = $_POST['text'];
         $row['sh'] = 1;

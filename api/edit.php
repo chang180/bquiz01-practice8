@@ -14,13 +14,19 @@ foreach ($_POST['id'] as $k => $id) {
             case "title":
                 $row['text'] = $_POST['text'][$k];
                 $row['sh'] = ($id == $_POST['sh']) ? 1 : 0;
-            break;
+                break;
             case "ad":
-            $row['text'] = $_POST['text'][$k];
-            $row['sh']=in_array($id,$_POST['sh'])?1:0;
-            break;
+                $row['text'] = $_POST['text'][$k];
+                $row['sh'] = in_array($id, $_POST['sh']) ? 1 : 0;
+                break;
+            case "mvim":
+                $row['sh'] = in_array($id, $_POST['sh']) ? 1 : 0;
+                break;
+            case "image":
+                $row['sh'] = in_array($id, $_POST['sh']) ? 1 : 0;
+                break;
             default:
-            break;
+                break;
         }
     }
     $db->save($row);
