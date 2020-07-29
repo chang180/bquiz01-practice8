@@ -15,17 +15,28 @@ foreach ($_POST['id'] as $k => $id) {
                 $row['text'] = $_POST['text'][$k];
                 $row['sh'] = ($id == $_POST['sh']) ? 1 : 0;
                 break;
+            case "menu":
+                $row['text'] = $_POST['text'][$k];
+                $row['name'] = $_POST['name'][$k];
+                $row['sh'] = in_array($id, $_POST['sh']) ? 1 : 0;
+                break;
+            case "admin":
+                $row['acc'] = $_POST['acc'][$k];
+                $row['pw'] = $_POST['pw'][$k];
+                break;
             case "ad":
                 $row['text'] = $_POST['text'][$k];
                 $row['sh'] = in_array($id, $_POST['sh']) ? 1 : 0;
-                break;
+            break;
             case "mvim":
                 $row['sh'] = in_array($id, $_POST['sh']) ? 1 : 0;
-                break;
+            break;
             case "image":
                 $row['sh'] = in_array($id, $_POST['sh']) ? 1 : 0;
-                break;
+            break;
             default:
+            $row['text'] = $_POST['text'][$k];
+            $row['sh'] = in_array($id, $_POST['sh']) ? 1 : 0;
                 break;
         }
     }

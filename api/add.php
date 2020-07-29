@@ -13,6 +13,16 @@ switch ($table) {
     case "title":
         $row['text'] = $_POST['text'];
         break;
+    case "menu":
+        $row['text'] = $_POST['text'];
+        $row['name'] = $_POST['name'];
+        $row['sh'] = 1;
+        $row['parent'] = 0;
+        break;
+    case "admin":
+        $row['acc'] = $_POST['acc'];
+        $row['pw'] = $_POST['pw'];
+        break;
     case "mvim":
         $row['sh'] = 1;
         break;

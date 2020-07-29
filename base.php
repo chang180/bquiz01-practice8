@@ -84,8 +84,8 @@ $total = $Total->find(1);
 $bottom = $Bottom->find(1);
 $title=$Title->find(['sh'=>1]);
 
-if (empty($_SESSION['login'])) {
-    $_SESSION['login'] = 1;
+if (empty($_SESSION['visited'])) {
+    $_SESSION['visited'] = 1;
     $total['total']++;
     $Total->save($total);
     $total = $Total->find(1);

@@ -10,7 +10,7 @@ switch ($table) {
         $row['total'] = $_POST['total'];
         break;
     case "bottom":
-        $row['bottom'] = $_POST['total'];
+        $row['bottom'] = $_POST['bottom'];
         break;
 }
 
