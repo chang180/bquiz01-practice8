@@ -1,4 +1,4 @@
-<?php include_once "base.php";?>
+<?php include_once "base.php"; ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <!-- saved from url=(0040)http://127.0.0.1/test/exercise/collage/? -->
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -21,8 +21,8 @@
 	</div>
 	<iframe style="display:none;" name="back" id="back"></iframe>
 	<div id="main">
-	<a title="<?=$title['text'];?>" href="index.php">
-			<div class="ti" style="background:url('img/<?=$title['name'];?>'); background-size:cover;"></div>
+		<a title="<?= $title['text']; ?>" href="index.php">
+			<div class="ti" style="background:url('img/<?= $title['name']; ?>'); background-size:cover;"></div>
 			<!--標題-->
 		</a>
 		<div id="ms">
@@ -30,10 +30,27 @@
 				<div id="menuput" class="dbor">
 					<!--主選單放此-->
 					<span class="t botli">主選單區</span>
+					<?php
+					$rows = $Menu->all(['parent' => 0, 'sh' => 1]);
+					foreach ($rows as $row) {
+					?>
+						<div class="mainmu"><a href="<?= $row['text']; ?>"><?= $row['name']; ?></a>
+							<?php
+							$subs = $Menu->all(['parent' => $row['id']]);
+							foreach ($subs as $sub) {
+							?>
+								<div class="mainmu2" style="display:none"><a href="<?= $sub['text']; ?>"><?= $sub['name']; ?></a></div>
+							<?php
+							}
+							?>
+						</div>
+					<?php
+					}
+					?>
 				</div>
 				<div class="dbor" style="margin:3px; width:95%; height:20%; line-height:100px;">
 					<span class="t">進站總人數 :
-					<?=$total['total'];?> </span>
+						<?= $total['total']; ?> </span>
 				</div>
 			</div>
 			<?php
@@ -46,9 +63,23 @@
 				<button style="width:100%; margin-left:auto; margin-right:auto; margin-top:2px; height:50px;" onclick="lo('?do=login')">管理登入</button>
 				<div style="width:89%; height:480px;" class="dbor">
 					<span class="t botli">校園映象區</span>
+					<div class="cent">
+						<img src="icon/up.jpg" onclick="pp(1)">
+						<?php
+						$rows = $Image->all(['sh' => 1]);
+						foreach ($rows as $key => $row) {
+						?>
+							<div class="im" id="ssaa<?= $key; ?>"><img src="img/<?= $row['name']; ?>" style="height:103px;width:150px"></div>
+						<?php
+						}
+						?>
+
+						<img src="icon/dn.jpg" onclick="pp(2)">
+					</div>
+
 					<script>
 						var nowpage = 0,
-							num = 0;
+							num = <?= count($rows); ?>;
 
 						function pp(x) {
 							var s, t;
@@ -65,13 +96,16 @@
 							}
 						}
 						pp(1)
+						$(".mainmu").hover(function(){
+							$(this).children(".mainmu2").toggle();
+						})
 					</script>
 				</div>
 			</div>
 		</div>
 		<div style="clear:both;"></div>
 		<div style="width:1024px; left:0px; position:relative; background:#FC3; margin-top:4px; height:123px; display:block;">
-			<span class="t" style="line-height:123px;"><?=$bottom['bottom'];?></span>
+			<span class="t" style="line-height:123px;"><?= $bottom['bottom']; ?></span>
 		</div>
 	</div>
 
